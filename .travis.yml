@@ -1,13 +1,9 @@
-# tell travis that we need sudo user permissions
 sudo: requried
-# tell travis to install docker because we will need a copy of it
 services:
   - docker
 
-# list of commands that need to be executed before running
 before_install:
   - docker build -t dieke102/docker-react -f Dockerfile.dev .
 
-# list of commands that need to be ran when being executed
   script:
     - docker run dieke102/docker-react npm run test -- --coverage
